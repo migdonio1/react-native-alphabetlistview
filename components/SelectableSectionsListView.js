@@ -10,6 +10,7 @@ import ReactNative, {
   StyleSheet,
   View,
   NativeModules,
+  RefreshControl,
 } from 'react-native';
 import merge from 'merge';
 
@@ -259,6 +260,12 @@ export default class SelectableSectionsListView extends Component {
       <View ref="view" style={[styles.container, this.props.style]}>
         <ListView
           ref="listview"
+          refreshControl={
+            <RefreshControl
+              refreshing={this.props.refreshing}
+              onRefresh={this.props.onRefresh}
+            />
+          }
           {...props}
         />
         {sectionList}
